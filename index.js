@@ -3,20 +3,24 @@
 //     area: (l, b) => l * b
 // }
 
-var rectangle = require("./rectangle");
+var rect = require("./rectangle");
 
 
 solveRect = (l, b) => {
-    console.log("Solving for rectangle with length : " + l + " and breath : " + b + " -->");
-    if (l <= 0 || b <= 0) {
-        console.log("Dimensions of Rectangle should be graeter than zero !");
-        console.log("\n");
-    }
-    else {
-        console.log("Area of the rectangle is : " + rectangle.area(l, b));
-        console.log("Perimeter of the rectangle is : " + rectangle.perimeter(l, b));
-        console.log("\n");
-    }
+    console.log("solving for the rectangle having dimension l = " + l + " and b = " + b);
+
+    rect(l, b,  (err, rectangle) => {
+      if(err) {
+        console.log("ERROR : ", err.message);
+      }
+
+      else
+      {
+        console.log("the area of the rectangle having dimension of l = " + l + " and b = " + b + " is : " + rectangle.area());
+        console.log("the perimeter of the rectangle having dimension of l = " + l + " and b = " + b + " is : " + rectangle.perimeter());
+      }
+
+    });
 }
 
 
